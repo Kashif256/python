@@ -62,3 +62,13 @@ for i in student_data.items(): # it gives the key and values both
 student_data2 = {1: ["kash", 21], 2: ["sanu", 20]}
 for i,j in student_data2.items(): # in this it gives only the pair value
     print(j)
+
+
+
+# ------------------ COMPREHENSION ------------------
+
+data = ["kash", "sanu", "saniya", "kash"]
+students = {i + 1: name for i, name in enumerate(data)} # it gives the keys for the value in the list
+print(students)
+d = { i: len(i) for i in data} # it gives the length of each name in the list
+print(d)
