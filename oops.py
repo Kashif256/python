@@ -47,7 +47,8 @@ print(react. length * react.breadth)  # o/p =>200
 print(react. length) # o/p => 10
 print(react. breadth) # o/p => 20
 
-# paramaterised constructor
+#                                     paramaterised constructor
+# A parameterized constructor is a constructor that accepts parameters (values) when an object is created. It is used to initialize an object's attributes with different values.
 
 class Student:
     def __init__(self, name, age):
@@ -124,6 +125,57 @@ circle.pi = 3.1458
 print(circle.pi) # 3.1458
 
 
+# adding a method to a class
 
-    
-    
+class Student:
+
+    # 1. Constructor
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    # 2. Normal method
+    def display(self):
+        print("Name:", self.name)
+        print("Age:", self.age)
+
+
+student1 = Student("KK", 20)
+student2 = Student('SA', 20)
+student1.display()
+student2.display()
+
+class Employee:
+    def function1(self):
+        print("Hello world")
+
+class Department(Employee):
+    pass
+emp =Employee()
+print(emp.function1( ))
+
+dept =Department()
+print(dept.function1())
+
+
+
+
+# Parent class
+class Shape:
+    def function1(self, length, breadth):
+        self.length = length
+        self.breadth = breadth
+
+# Child class
+class Rectangle(Shape):
+    def area(self):
+        return self.length * self.breadth
+
+# Creating child class object
+rect = Rectangle()
+
+# Calling the parent class method
+rect.function1(10, 5)
+
+# Calling the child class method
+print("Area:", rect.area())
