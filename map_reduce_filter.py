@@ -11,16 +11,6 @@ result = list(map(lambda x: x * 2, numbers))
 print(result)
 
 
-# Definition: reduce() combines items in a collection to produce a single result.
-# syntax => from functools import reduce
-#           reduce(function, iterable)
-
-from functools import reduce
-numbers = [1, 2, 3, 4]
-result = reduce(lambda x, y: x + y, numbers)
-print(result)
-
-
 radius = [1,2, 3, 4]
 circumtance = list(map(lambda radius: 3.14 * radius**2 , radius))
 print(circumtance)
@@ -60,5 +50,60 @@ print("The temperature in fahrenheit is: ", fahrenheit)
 import statistics
 data = [1, 2, 3, 4, 5, 6, 7, 8, 9,2,1,12,11]
 avg = statistics.mean(data)
-filter = list(filter(lambda x: x> avg , data))
-print(filter)
+my_filter = list(filter(lambda x: x> avg , data))
+print(my_filter)
+
+
+print("MAP & FILTER")
+
+# in this it calls the value from the 6th line and filter it based on greater than 10.
+sanu = list(filter(lambda x: x > 10, circum))
+print(sanu)  # [12.56, 28.26, 50.24]
+
+
+print("To reduce the 0 nd empty values")
+num=[1,2,3,4,0,0,6,"",5]
+my_filter_26 = list(filter(lambda x:x!=0 and x!="", num))
+print(my_filter_26)  #[1, 2, 3, 4, 6, 5]
+
+
+
+# Reduce function
+
+print ("Reduce function")
+
+# Definition: reduce() combines items in a collection to produce a single result.
+# syntax => from functools import reduce
+#           reduce(function, iterable)
+
+from functools import reduce
+numbers = [1, 2, 3, 4]
+result = reduce(lambda x, y: x + y, numbers)
+print(result)
+
+
+
+# multiply all the items in a list
+
+from functools import reduce
+data_26 = [1,2,3,4,5,6]
+result_26 = reduce(lambda x, y: x*y, data_26)
+print(result_26)    # output => 720
+
+
+# without lambda function
+
+data_26 = [1,2,3,4,5,6]
+prev = data[0]
+for i in data_26:
+    i = i*prev
+    prev = i
+print (prev)  # output => 720
+
+
+# sum all the items in a list
+
+from functools import reduce
+data_26 = [1,2,3,4,5,6]
+result_26 = reduce(lambda x, y: x+y, data_26)
+print(result_26)
