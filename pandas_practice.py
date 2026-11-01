@@ -71,4 +71,217 @@ print("To remove column we use 'df.pop or df.drop' with use of that we can remov
 # df_column = df.pop('Salary_INR')
 # print(df_column)
 # print(df.head())
-      
+#df_new= df['Salary_INR'].apply(np.sqrt)
+# print(df_new)
+
+
+print("Combining data frames:")
+
+# ==========================================
+# COMBINING DATAFRAMES IN PANDAS
+# ==========================================
+
+# Combining DataFrames means bringing two or more
+# DataFrames together into a single DataFrame.
+
+# Example:
+
+import pandas as pd
+
+# First DataFrame - Employee Details
+df1 = pd.DataFrame({
+    "Employee_ID": [101, 102, 103],
+    "Name": ["Arun", "Kashif", "Sanu"]
+})
+
+# Second DataFrame - Employee Salaries
+df2 = pd.DataFrame({
+    "Employee_ID": [101, 102, 104],
+    "Salary": [25000, 30000, 35000]
+})
+
+# ==========================================
+# JOIN OPERATION IN PANDAS
+# ==========================================
+
+# Join operation combines two DataFrames
+# based on a common column or index.
+
+# Here, Employee_ID is the common column.
+
+# INNER JOIN
+# Returns only matching records from both DataFrames.
+
+inner_df = pd.merge(df1, df2, on="Employee_ID", how="inner")
+print(inner_df)
+
+
+# LEFT JOIN
+# Returns all records from the left DataFrame
+# and matching records from the right DataFrame.
+# If there is no match, NaN will appear.
+
+left_df = pd.merge(df1, df2, on="Employee_ID", how="left")
+print(left_df)
+
+
+# RIGHT JOIN
+# Returns all records from the right DataFrame
+# and matching records from the left DataFrame.
+
+right_df = pd.merge(df1, df2, on="Employee_ID", how="right")
+print(right_df)
+
+
+# OUTER JOIN
+# Returns all records from both DataFrames.
+# If there is no match, NaN will appear.
+
+outer_df = pd.merge(df1, df2, on="Employee_ID", how="outer")
+print(outer_df)
+
+
+# ==========================================
+# DIFFERENCE BETWEEN CONCAT, MERGE AND JOIN
+# ==========================================
+
+# 1. concat() - Combines DataFrames vertically or horizontally.
+# 2. merge() - Combines DataFrames using common columns or keys.
+# 3. join()  - Joins DataFrames mainly using their indexes.
+
+
+# ==========================================
+# QUICK SUMMARY
+# ==========================================
+
+# INNER JOIN  - Only matching records from both DataFrames.
+# LEFT JOIN   - All records from the left DataFrame, if not exist same then NaN will appear
+# RIGHT JOIN  - All records from the right DataFrame, if not exist same then NaN will appear
+# OUTER JOIN  - All records from both DataFrames, if not exist same then NaN will appear.
+
+# CONCATENATION IN PANDAS
+# ==========================================
+
+# pd.concat() is used to combine DataFrames.
+# It can combine them vertically (rows)
+# or horizontally (columns).
+
+# Example:
+# pd.concat([df1, df2], axis=0)  # Vertical
+# pd.concat([df1, df2], axis=1)  # Horizontal
+
+print("Concatenation of DataFrames:")
+
+concat_df = pd.concat([df1, df2])
+print(concat_df)
+
+
+# MERGE IN PANDAS
+
+# merge() is used to combine two DataFrames
+# based on a common column or key.
+
+# Syntax:
+# pd.merge(df1, df2, on="Common_Column")
+
+# Example:
+# pd.merge(df1, df2, on="Employee_ID")
+
+# Employee_ID is the common column in both DataFrames.
+
+print("Merge operation of DataFrames:")
+
+import pandas as pd
+
+df1 = pd.DataFrame({
+    "Employee_ID": [101, 102, 104],
+    "Name": ["Arun", "Kashif", "Sanu"]
+})
+
+df2 = pd.DataFrame({
+    "Employee_ID": [101, 102, 103],
+    "Salary": [25000, 30000, 35000]
+})
+
+# Merge two DataFrames using Employee_ID
+new_df = pd.merge(df1, df2, on="Employee_ID") # we can also use how="inner" for inner join, how="left" for left join, how="right" for right join, and how="outer" for outer join.
+
+print(new_df)
+
+
+# ==========================================
+# LOC VS ILOC IN PANDAS
+# ==========================================
+
+# Both loc and iloc are used to select specific
+# rows and columns from a DataFrame.
+
+
+# ==========================================
+# 1. LOC IN PANDAS
+# ==========================================
+
+# loc is used to select rows and columns using labels.
+
+
+# ==========================================
+# 2. ILOC IN PANDAS
+# ==========================================
+
+# iloc is used to select rows and columns using
+# integer positions.
+
+# ==========================================
+# 3. PRACTICAL EXAMPLE
+# ==========================================
+
+import pandas as pd
+
+df = pd.DataFrame({
+    "Name": ["Arun", "Kashif", "Sana", "Rahul"],
+    "Age": [24, 22, 23, 28],
+    "Salary": [28000, 30000, 32000, 52000]
+})
+print("loc and iloc examples:")
+
+# Selecting a row using loc
+print(df.loc[1])
+
+# Selecting a row using iloc
+print(df.iloc[1])
+
+# Selecting specific columns using loc
+print(df.loc[:, ["Name", "Salary"]])
+
+# Selecting specific columns using iloc
+print(df.iloc[:, [0, 2]])
+
+# Selecting the third employee using iloc
+print(df.iloc[2])
+
+
+# ==========================================
+# 4. DIFFERENCE BETWEEN LOC AND ILOC
+# ==========================================
+
+# LOC:
+# 1. Label-based selection.
+# 2. Uses row and column labels.
+# 3. Includes the ending label in slicing.
+
+# ILOC:
+# 1. Integer position-based selection.
+# 2. Uses integer positions.
+# 3. Excludes the ending position in slicing.
+
+
+# ==========================================
+# QUICK SUMMARY
+# ==========================================
+
+# loc  = Label-based selection.
+# iloc = Integer position-based selection.
+
+# Remember:
+# loc  -> Labels
+# iloc -> Integer positions
